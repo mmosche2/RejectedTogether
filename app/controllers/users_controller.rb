@@ -81,11 +81,15 @@ class UsersController < ApplicationController
 
 	private 
 
-		AME_API_BASE = "http://4ja9.localtunnel.com/api/v1"
+		# For Testing
+		# AME_API_BASE = "http://4ja9.localtunnel.com/api/v1"
+
+		# For Prod
+		AME_API_BASE = "http://askmeevery.com/api/v1"
 
 		def access_token
-			'c8cbacf71b319bf590422fd817553f15'
-		#'bb7aafd9a1a2cf8e21fb1632991aab77' # for production
+			# 'c8cbacf71b319bf590422fd817553f15' # for testing
+			'bb7aafd9a1a2cf8e21fb1632991aab77' # for production
 		end
 
 		def api_users_url
