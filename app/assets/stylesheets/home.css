@@ -1,0 +1,13 @@
+.rt_title{
+	margin:50px;
+}
+
+input[type='text'].font_large{
+	font-size: 20px;
+	height:30px;
+	font:"HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+	font-weight: 200;
+	letter-spacing: 0.08em;
+	border-radius: 4px;
+	line-height: 1.4;
+}

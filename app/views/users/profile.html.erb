@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="span12">
+		<div class="dropdown pull-right">
+		  <%= @user.email %> | 
+		  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+		    account
+		    <b class="caret"></b>
+		  </a>
+		  <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+		    <li><%= link_to 'rejections', user_url(@user) %></li>
+		    <li><%= link_to 'logout', logout_path %></li>
+		  </ul>
+		</div>
+		
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="span12">
+		<h1>My Profile</h1>
+		<br />
+
+		<p class='lead'>
+			All settings <span class='lead smaller italic'>(question text, question schedule, responses, email, password, and more)</span> can be changed by signing in to your <span class="weighted"><%= link_to 'AskMeEvery account', @ame_url %></span>.
+		</p>
+		<p class='lead nomargin'>email: <span class="weighted"><%= @user.email %></span></p>
+		<% if @user.pw_token %>
+			<p class="lead nomargin">temporary password token: <span class="weighted"><%= @user.pw_token %></span></p>
+			<p class="lead smaller italic nomargin"> (use this to login to your AskMeEvery account - you can change this once you log in)</p>
+		<% end %>
+
+
+	</div>
+</div>

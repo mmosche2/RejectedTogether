@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RejectionTherapy</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrap">
+	<div class="container">
+
+		<div class="row">
+	    <% if alert %>
+	      <div class="span12 margin20">
+	        <div class="alert alert-error">
+	          <a class="close" data-dismiss="alert" href="#">&times;</a>
+	          <%= alert %>
+	        </div>
+	      </div>
+	    <% end %>
+	    <% if notice %>
+	      <div class="span12 margin20">
+	        <div class="alert alert-success">
+	          <a class="close" data-dismiss="alert" href="#">&times;</a>
+	          <%= notice %>
+	        </div>
+	      </div>
+	    <% end %>
+	  </div>
+
+		<%= yield %>
+	</div>
+	<br /><br />
+	<div id="push"></div>
+</div>
+
+<div id="footer">
+	<div class="container">
+		<div class='row'><div class='span12'>
+			<p class='muted credit centered'>
+				RTSG @2013 | Powered by <%= link_to 'AskMeEvery', 'http://www.askmeevery.com' %>
+			</p>
+		</div></div>
+	</div>
+</div>
+
+</body>
+</html>
