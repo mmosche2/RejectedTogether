@@ -1,0 +1,17 @@
+.answer_date{
+	margin-bottom: 10px;
+}
+.answer_email{
+	margin-bottom: 0px;
+	margin-left: 20px;
+}
+.answer{
+	margin-left: 20px;
+	letter-spacing: .05em;
+	margin-top:0px;
+	margin-bottom: 50px;
+}
+
+.red{color:#ff6464;}
+.blue{color:#0088cc;}
+.green{color:#57ad68;}

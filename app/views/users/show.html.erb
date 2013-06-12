@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="span12">
+	<div class="span10 offset1">
 		<div class="dropdown pull-right">
 		  <%= @user.email %> | 
 		  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
@@ -17,18 +17,33 @@
 
 
 <div class="row">
-	<div class="span12">
+	<div class="span10 offset1">
 		<h1>Rejections</h1>
 		<p class='lead'>
 			Did you get rejected today?
 		</p>
 		<hr />
 
-		<% @my_answers.reverse_each do |a| %>
+		<%# @all_rejections %>
+
+		<% @all_rejections.reverse_each do |a| %>
+
 			<div class="answer_box">
-				<p class="lead small answer_date nomargin muted">
-					<%= a['date'].to_datetime.strftime('%A, %b %e') %> 
-				</p>
+				<% if a['date'].to_date != @current_read_date %>
+					<p class="lead small answer_date blue">
+						<%= a['date'].to_datetime.strftime('%A, %b %e') %>
+					</p>
+					<% @current_read_date = a['date'].to_date %>
+				<% end %>
+				
+				<p class="answer_email">
+					<% if a['user_email'] == @user.email %>
+						<span class="lead smaller green"><%= a['user_email'] %>:</span>
+					<% else %>
+						<span class="lead smaller muted"><%= a['user_email'] %>:</span>
+					<% end %>
+				</p> 
+				
 				<p class="lead answer">
 					<%= a['answer'] %>
 				</p>

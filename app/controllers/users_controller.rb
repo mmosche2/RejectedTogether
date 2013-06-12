@@ -6,7 +6,6 @@ require "httparty"
 class UsersController < ApplicationController
 
 	def index
-
 	end
 
 	def show
@@ -15,6 +14,25 @@ class UsersController < ApplicationController
 		@my_answers = HTTParty.get(api_answers_url(@user.ame_user_id, @user.question_id),
 						:query => {:access_token => access_token}
 			).parsed_response
+
+		@all_rejections = []
+		all_users = User.all
+		all_users.each do |user|
+
+			ame_answers = HTTParty.get(api_answers_url(user.ame_user_id, user.question_id),
+						:query => {:access_token => access_token}
+			).parsed_response
+
+			ame_answers.each do |a|
+				a['user_email'] = user.email
+				@all_rejections << a
+			end
+
+			@all_rejections.sort_by! { |r| r['date'] }
+
+			@current_read_date = Date.today + 1.day
+
+		end
 
 	end
 
@@ -82,13 +100,13 @@ class UsersController < ApplicationController
 	private 
 
 		# For Testing
-		# AME_API_BASE = "http://4ja9.localtunnel.com/api/v1"
+		# AME_API_BASE = "http://3gmd.localtunnel.com/api/v1"
 
 		# For Prod
 		AME_API_BASE = "http://askmeevery.com/api/v1"
 
 		def access_token
-			# 'c8cbacf71b319bf590422fd817553f15' # for testing
+			#'c8cbacf71b319bf590422fd817553f15' # for testing
 			'bb7aafd9a1a2cf8e21fb1632991aab77' # for production
 		end
 

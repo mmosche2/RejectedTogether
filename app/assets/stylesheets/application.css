@@ -36,6 +36,7 @@ html, body{
 
 .lead{
 	line-height: 1.4;
+	margin:0px;
 }
 .lead.small{
 	font-size: 16px;
@@ -72,13 +73,7 @@ html, body{
 /***** ANSWERS *****/
 
 
-.answer_date{
-	font-style: italic;
-}
-.answer{
-	margin-left: 20px;
-	letter-spacing: .05em
-}
+
 
 /***** FOOTER *****/
 
