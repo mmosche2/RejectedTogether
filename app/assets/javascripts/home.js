@@ -27,5 +27,16 @@ $(document).ready(function(){
 		rm_id++;
 	});
 
+	$('.comment_body_input').blur(function(){
+		var input_val = $.trim($(this).val());
+		if( !input_val || input_val == "") {
+			$(this).siblings('.submit_comment').addClass('hidden');
+			//alert("i would have submitted here");
+		}
+	});
+	$('.comment_body_input').focus(function(){
+		$(this).siblings('.submit_comment').removeClass('hidden');
+	});
+
 
 })

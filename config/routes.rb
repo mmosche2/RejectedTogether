@@ -7,6 +7,8 @@ RejectionTherapy::Application.routes.draw do
   		get :profile
   	end
   end
+  resources :comments, :only => [:create, :destroy]
+  
 	match '/logout', :to => 'users#logout'
 
 

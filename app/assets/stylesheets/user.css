@@ -9,7 +9,20 @@
 	margin-left: 20px;
 	letter-spacing: .05em;
 	margin-top:0px;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
+}
+.add_new_comment{
+	margin-left: 50px;
+	margin-top:10px;
+}
+.show_comments{
+	margin-left: 50px;
+}
+.comment_user{
+
+}
+.comment_body{
+
 }
 
 .red{color:#ff6464;}

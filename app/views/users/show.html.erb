@@ -48,6 +48,30 @@
 					<%= a['answer'] %>
 				</p>
 			</div>
+
+			<div class="comments_box">
+				<% comments = Comment.where(answer_id: a['id']) %>
+				<% comments.each do |comment| %>
+					<div class="show_comments">
+						<span class="comment_user muted lead smallest"><%= comment.user.email %> said... </span>
+						<span class="comment_body lead smaller"><%= comment.body %></span>
+						<% if comment.user_id == @user.id %>
+							<%= link_to comment_path(:id => comment.id, :user_id => @user.id), :confirm => 'Are you sure?', :method => :delete, :class => 'muted' do %>
+	              <span class="comment_remove"><i class="icon-remove"></i></span>
+	            <% end %>
+	          <% end %> 
+					</div>
+				<% end %>
+
+				<div class="add_new_comment">
+					<%= form_tag(comments_path, :id => "NewComment") do %>
+						<input type="hidden" name="answer_id" value=<%= a['id'] %> />
+						<input type="hidden" name="user_id" value=<%= @user.id %> />
+					  <textarea name="body" type="text" class="comment_body_input" autocomplete="off" ></textarea>
+					  <button type="submit" id="" class="btn btn-small submit_comment hidden">add comment</button>
+					<% end %>
+				</div>
+			</div>
 		<% end %>
 
 	</div>
