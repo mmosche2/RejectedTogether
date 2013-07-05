@@ -23,6 +23,8 @@ class UsersController < ApplicationController
 						:query => {:access_token => access_token}
 			).parsed_response
 
+			next if ame_answers.code != 200
+
 			ame_answers.each do |a|
 				a['user_email'] = user.email
 				@all_rejections << a
