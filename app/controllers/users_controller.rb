@@ -19,12 +19,12 @@ class UsersController < ApplicationController
 		all_users = User.all
 		all_users.each do |user|
 
-			ame_answers = HTTParty.get(api_answers_url(user.ame_user_id, user.question_id),
-						:query => {:access_token => access_token}
-			).parsed_response
+			response = HTTParty.get(api_answers_url(user.ame_user_id, user.question_id),
+						:query => {:access_token => access_token} )
 
-			next if ame_answers.code != 200
+			next if response.code != 200
 
+			ame_answers = response.parsed_response
 			ame_answers.each do |a|
 				a['user_email'] = user.email
 				@all_rejections << a
